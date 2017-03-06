@@ -3,9 +3,9 @@
 SOURCEDIR="/media/Data/TempDownloads/"
 
 #For each folder in TempDownloads
-for folder in $(find "$SOURCEDIR" -maxdepth 1) do
+for folder in $(find "$SOURCEDIR" -maxdepth 1); do
   echo "$folder"
-  if (find "$folder" -maxdepth 1 -name "*.rar") == TRUE do
+  if [[ $(find "$folder" -maxdepth 1 -name "*.rar" | wc -l) -gt 0 ]]; then
     echo "Found a Rar"
-  done
+  fi
 done
