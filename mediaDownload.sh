@@ -17,7 +17,7 @@ fi
 lftp -p $PORT $PROTOCOL://$URL <<- DOWNLOAD
     user $USER "$PASS"
     cd $REMOTEDIR
-    mirror -P 10 --use-pget-n=2
+    mirror --newer-than=now-1days --only-newer -P 10 --use-pget-n=2
 DOWNLOAD
 
 if [  $? -ne 0 ]; then
