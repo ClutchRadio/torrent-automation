@@ -17,7 +17,7 @@ fi
 lftp -p $PORT $PROTOCOL://$URL <<- DOWNLOAD
     user $USER "$PASS"
     cd $REMOTEDIR
-    mirror --newer-than=now-1days --only-newer -P 10 --use-pget-n=2
+    mirror -c --newer-than=now-1days --only-newer --no-empty-dirs -P10 --use-pget-n=2 --log=/home/ubuntu/Scripts/logs/mediaDownload-mirror.log
 DOWNLOAD
 
 if [  $? -ne 0 ]; then
